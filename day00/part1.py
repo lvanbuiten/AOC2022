@@ -1,7 +1,11 @@
 from __future__ import annotations
+from __future__ import absolute_import
 
 import argparse
-import os.path
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from support import support
 
 import pytest

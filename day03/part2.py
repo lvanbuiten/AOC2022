@@ -15,21 +15,31 @@ INPUT_TXT = os.path.join(os.path.dirname(__file__), 'input.txt')
 
 
 def compute(s: str) -> int:
-    numbers = support.parse_numbers_split(s)
-    for n in numbers:
-        pass
-
+    badges = []
     lines = s.splitlines()
-    for line in lines:
-        pass
-    # TODO: implement solution here!
-    return 0
+    for index in range(0, len(lines), 3):
+        group = lines[index:index+3]
+
+        for l in set(group[0]):
+            if l in group[1] and l in group[2]:
+                if l in string.ascii_uppercase:
+                    value = 26 + string.ascii_uppercase.index(l)
+                else:
+                    value = string.ascii_lowercase.index(l)
+                badges.append(value + 1)
+    
+    return sum(badges)
 
 
 INPUT_S = '''\
-
+vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
 '''
-EXPECTED = 1
+EXPECTED = 70
 
 
 @pytest.mark.parametrize(

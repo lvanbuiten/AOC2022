@@ -15,21 +15,33 @@ INPUT_TXT = os.path.join(os.path.dirname(__file__), 'input.txt')
 
 
 def compute(s: str) -> int:
-    numbers = support.parse_numbers_split(s)
-    for n in numbers:
-        pass
-
+    duplicates = []
     lines = s.splitlines()
     for line in lines:
-        pass
-    # TODO: implement solution here!
-    return 0
+        size = len(line)
+        first = line[:(int)(size/2)]
+        second = line[(int)(size/2):]
+
+        for l in set(second):
+            if l in first:
+                if l in string.ascii_uppercase:
+                    value = 26 + string.ascii_uppercase.index(l)
+                else:
+                    value = string.ascii_lowercase.index(l)
+                duplicates.append(value + 1)
+    
+    return sum(duplicates)
 
 
 INPUT_S = '''\
-
+vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
 '''
-EXPECTED = 1
+EXPECTED = 157
 
 
 @pytest.mark.parametrize(

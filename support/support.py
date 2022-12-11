@@ -46,6 +46,11 @@ def adjacent_8(x: int, y: int) -> Generator[tuple[int, int], None, None]:
                 continue
             yield x + x_d, y + y_d
 
+def adjacent_8_including(x: int, y: int) -> Generator[tuple[int, int], None, None]:
+    for y_d in (-1, 0, 1):
+        for x_d in (-1, 0, 1):
+            yield x + x_d, y + y_d
+
 
 def parse_coords_int(s: str) -> dict[tuple[int, int], int]:
     coords = {}

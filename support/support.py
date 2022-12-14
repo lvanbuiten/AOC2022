@@ -38,6 +38,15 @@ def adjacent_4(x: int, y: int) -> Generator[tuple[int, int], None, None]:
     yield x, y + 1
     yield x - 1, y
 
+def adjacent_4_in_range(x: int, y: int, maxX: int, maxY: int) -> Generator[tuple[int, int], None, None]:
+    if y > 0:
+        yield x, y - 1
+    if x < maxX:
+        yield x + 1, y
+    if y < maxY:
+        yield x, y + 1
+    if x > 0:
+        yield x - 1, y
 
 def adjacent_8(x: int, y: int) -> Generator[tuple[int, int], None, None]:
     for y_d in (-1, 0, 1):

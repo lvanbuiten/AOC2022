@@ -99,6 +99,18 @@ def format_coords_hash(coords: set[tuple[int, int]]) -> str:
         for y in range(min_y, max_y + 1)
     )
 
+def format_coords_hash_values(coords: dict) -> str:
+    min_x = min(x for x, _ in coords)
+    max_x = max(x for x, _ in coords)
+    min_y = min(y for _, y in coords)
+    max_y = max(y for _, y in coords)
+    return '\n'.join(
+        ''.join(
+            coords.get((x,y), '.')
+            for x in range(min_x, max_x + 1)
+        )
+        for y in range(min_y, max_y + 1)
+    )
 
 def print_coords_hash(coords: set[tuple[int, int]]) -> None:
     print(format_coords_hash(coords))
